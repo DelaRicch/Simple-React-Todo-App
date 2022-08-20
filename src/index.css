@@ -9,7 +9,17 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-fsf {
-    color:  #2222f7;
-    background: #0b920b;
+/* .todo-field {
+    display: flex;
+    cursor: default;
+    overflow-x: hidden;
 }
+
+.todo-field:hover + .del-btn{
+    left: 0;
+}
+
+.del-btn {
+    position: absolute;
+    right: -3rem;
+} */

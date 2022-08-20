@@ -10,15 +10,17 @@ const style = {
     button: `flex items-center cursor-pointer`
 }
 
-const Todo = ({todo}) => {
+const Todo = ({todo, toggleComplete, deleteTodo}) => {
   return (
-    <li className={style.li}>
-        <div className={style.row}>
-            <input type="checkbox" />
-            <p className={style.text}>{todo}</p>
-        </div>
-        <button><BsTrash /> </button>
-    </li>
+    <div className="todo-field bg-red-400">
+        <li className={todo.completed ? style.liComplete : style.li}>
+            <div className={style.row}>
+                <input onChange={() => toggleComplete(todo)} type="checkbox" checked={todo.completed ? 'checked' : ''} />
+                <p onClick={() => toggleComplete(todo)} className={todo.completed ? style.textComplete : style.text}>{todo.text}</p>
+            </div>
+            <button className='del-btn' onClick={() => deleteTodo(todo.id)}><BsTrash /> </button>
+        </li>
+    </div>
   )
 }
 
