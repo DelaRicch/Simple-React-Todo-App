@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsPlus } from "react-icons/bs";
 import Todo from "./Todo";
 
+import {db} from './firebase'
+import { query, collection } from "firebase/firestore";
 
 const style = {
   bg: `h-screen w-screen p-4 bg-gradient-to-r from-[#2222f7] to-[#0b920b]`,
@@ -15,7 +17,15 @@ const style = {
 
 function App() {
 
-  const [todos, setTodos] = useState(['Learn React', 'Write Js Code'])
+  const [todos, setTodos] = useState(['Learn React', 'Write Js Code', 'Learn Tailwind',])
+
+  // Create Todo
+  // Read Todo from Firebase
+  useEffect(() => {
+    const q = query(collection(db, 'todos'))
+  }, [])
+  // Update Todo in Firebase
+  // Delete Todo
 
   return (
     <section className={style.bg}>
@@ -29,7 +39,6 @@ function App() {
           {todos.map((todo, index) => (
             <Todo key={index} todo={todo} />
           ))}
-          <Todo />
         </ul>
         <p className={style.count}>You have 2 todos</p>
       </div>
